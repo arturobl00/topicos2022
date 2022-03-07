@@ -52,14 +52,81 @@
             $tabla = 0;
             $miltiplo = 0;
             $resultado = 0;
-            echo "<h2>Ejemplo Ciclo anidado Tablas del multiplicar</h2>";
-            for($tabla=1; $tabla<=10; $tabla++){
-                for($multiplo=1; $multiplo<=10; $multiplo++){
-                    $resultado = $tabla * $multiplo;
-                    echo "<p>$tabla X $multiplo = $resultado</p>";
+            echo "<h2>Ejemplo Ciclo FOR anidado Tablas del multiplicar</h2>";
+            
+            echo "<table class='table table-dark'>";
+            for($tabla=10; $tabla>=1; $tabla--){
+                echo "<tr>";
+                for($multiplo=10; $multiplo>=6; $multiplo--){
+                    echo "<td>";
+                    $resultado = $multiplo * $tabla;
+                    echo "<p>$multiplo * $tabla= $resultado</p></td>";
                 }
             }
+            echo "</table>";
+
+            echo "<table class='table table-dark'>";
+            for($tabla=10; $tabla>=1; $tabla--){
+                echo "<tr>";
+                for($multiplo=5; $multiplo>=1; $multiplo--){
+                    echo "<td>";
+                    $resultado = $multiplo * $tabla;
+                    echo "<p>$multiplo * $tabla= $resultado</p></td>";
+                }
+            }
+            echo "</table>";
+
+            echo"<div class='container'>";
+            echo"<h2>Ciclo Do While Tablas de Multiplicar</h2>";
+            $tabla3 = 1;
+            $nume = 1;
+            $res;
+            echo "<table class='table table-striped table-dark'>";
+            do{
+                $res = $nume * $tabla3;
+                echo "<td>";
+                echo "<p> $tabla3 X $nume = $res </p></td>";
+                $tabla3++;
+
+                if($tabla3 ==6 ){
+                    echo"<tr>";
+                    $tabla3=1;
+                    $nume++;
+                }
+
+            }while($nume <= 10);
+            echo"</table>";
+            echo "</div>";
+
+            echo"<br/>";
+
+            echo"<div class='container'>";
+            $tabla3 = 6;
+            $nume = 1;
+            $res;
+            echo "<table class='table table-striped table-dark'>";
+            do{
+                $res = $nume * $tabla3;
+                echo "<td>";
+                echo "<p> $tabla3 X $nume = $res </p></td>";
+                $tabla3++;
+
+                if($tabla3 ==11 ){
+                    echo"<tr>";
+                    $tabla3=6;
+                    $nume++;
+                }
+
+            }while($nume <= 10);
+            echo"</table>";
+            echo "</div>";
+
+
+
+            
+
         ?>
     </div>
+
 </body>
 </html>
