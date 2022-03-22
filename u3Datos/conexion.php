@@ -15,6 +15,14 @@
         echo("Conexion Fallida".mysqli_connect_error());
     }
     else{
+        
+        //Practica insertar datos a una tabla
+        if(!mysqli_query($conn, $queryInsert)){
+        $queryInsert = "INSERT INTO datos (Nombre, Apellido, Edad) VALUES ('Luis Enrique', 'Castro', '15')";
+            //echo "Registro capturado </br>";
+            echo "Error: ".$queryInsert, mysqli_error($conn)."</br>";
+        }
+        
         //echo("Conexion Exitosa");
         //Primer paso tener la conexion listo
         //Segundo paso crear un Query (Solicitud al servidor)
