@@ -7,7 +7,7 @@
     $username = "root";
     $password =  "";
     $database = "topicosu3";
-
+    
     //Crear la conexion por MYSQLi Procedural
     $conn = mysqli_connect($servername,$username,$password,$database);
 
@@ -15,14 +15,21 @@
         echo("Conexion Fallida".mysqli_connect_error());
     }
     else{
-        
+        /*
         //Practica insertar datos a una tabla
+        $queryInsert = "INSERT INTO datos (Nombre, Apellido, Edad) VALUES ('Mariel', 'Maldonado', '18')";
         if(!mysqli_query($conn, $queryInsert)){
-        $queryInsert = "INSERT INTO datos (Nombre, Apellido, Edad) VALUES ('Luis Enrique', 'Castro', '15')";
             //echo "Registro capturado </br>";
             echo "Error: ".$queryInsert, mysqli_error($conn)."</br>";
         }
+        */
+
+        //Practica Update Set
+        $queryUpdate = "UPDATE datos SET Edad = 30 WHERE Id BETWEEN 25 AND 28";
+        mysqli_query($conn, $queryUpdate);
+
         
+
         //echo("Conexion Exitosa");
         //Primer paso tener la conexion listo
         //Segundo paso crear un Query (Solicitud al servidor)
