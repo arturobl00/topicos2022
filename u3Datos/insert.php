@@ -59,6 +59,14 @@
             </div>
             <br>
             <div class="form-group">
+                <label for="estado">Estado:</label>
+                <select name="estado" id="estado" class="form-select">
+                  <option value="Activado">Activado</option>
+                  <option value="Desactivado">Desactivado</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
                 <input type="submit" name="guardar" value="Guardar" class="btn btn-primary"/>
                 <a class="btn btn-success" href="index.php">Terminar</a>
             </div>
@@ -74,11 +82,12 @@
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $edad = $_POST['edad'];
+        $estado = $_POST['estado'];
 
         //Comentario
-        //echo $nombre, $apellido, $edad;
+        //echo $nombre, $apellido, $edad, $estado;
 
-        $queryInsert = "INSERT INTO datos (Nombre, Apellido, Edad) VALUES ('$nombre', '$apellido', '$edad')";
+        $queryInsert = "INSERT INTO datos (Nombre, Apellido, Edad, Estado) VALUES ('$nombre', '$apellido', '$edad', '$estado')";
         if(!mysqli_query($conn, $queryInsert)){
             //echo "Registro capturado </br>";
             echo "Error: ".$queryInsert, mysqli_error($conn)."</br>";

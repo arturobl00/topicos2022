@@ -28,7 +28,11 @@
         $queryUpdate = "UPDATE datos SET Edad = 30 WHERE Id BETWEEN 25 AND 28";
         mysqli_query($conn, $queryUpdate);
 
-        
+        /*Practica Delete
+        $queryDelete = "DELETE FROM datos WHERE id = '7'";
+        mysqli_query($conn, $queryDelete);
+        */
+
 
         //echo("Conexion Exitosa");
         //Primer paso tener la conexion listo

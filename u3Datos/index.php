@@ -46,6 +46,7 @@
       <th scope="col">#NOMBRE</th>
       <th scope="col">#APELLIDO</th>
       <th scope="col">#EDAD</th>
+      <th scope="col">#ESTADO</th>
     </tr>
   </thead>
   <tbody>
@@ -58,7 +59,8 @@
                 echo "<tr><th scope='row'>".$row["Id"].
                 "</th><td>".$row["Nombre"].
                 "</td><td>".$row["Apellido"].
-                "</td><td>".$row["Edad"]."</td>";
+                "</td><td>".$row["Edad"].
+                "</td><td>".$row["Estado"]."</td>";
             }
         }
         else{
