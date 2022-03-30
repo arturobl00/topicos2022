@@ -25,10 +25,10 @@
           <a class="nav-link" aria-current="page" href="index.php">Mostrar Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Insertar Datos</a>
+          <a class="nav-link" href="insert.php">Insertar Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="update.php">Actualizar Datos</a>
+          <a class="nav-link active" href="#">Actualizar Datos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Eliminar Datos</a>
@@ -40,65 +40,82 @@
  
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mt-4">Formulario de Registro</h2>
+        <h2 class="mt-4">Edición de Registro</h2>
         <hr>
         <form method="POST">
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" class="form-control"/>
+                <label for="valor">Valor:</label>
+                <input type="text" name="valor" id="valor" class="form-control"/>
             </div>
             <br>
             <div class="form-group">
-                <label for="apellido">Apellido:</label>
-                <input type="text" name="apellido" id="apellido" class="form-control"/>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="edad">Edad:</label>
-                <input type="number" name="edad" id="edad" class="form-control"/>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="estado">Estado:</label>
-                <select name="estado" id="estado" class="form-select">
-                  <option value="Activado">Activado</option>
-                  <option value="Desactivado">Desactivado</option>
+                <label for="campo">Campo:</label>
+                <select name="campo" id="campo" class="form-select">
+                  <option value="id">#ID</option>
+                  <option value="nombre">#NOMBRE</option>
+                  <option value="apellido">#APELLIDO</option>
+                  <option value="estado">#ESTADO</option>
                 </select>
             </div>
             <br>
             <div class="form-group">
-                <input type="submit" name="guardar" value="Guardar" class="btn btn-primary"/>
+                <input type="submit" name="buscar" value="Buscar" class="btn btn-primary"/>
                 <a class="btn btn-success" href="index.php">Terminar</a>
             </div>
         </form>
     </div>
 </div>
-
+<br>
 <?php
-    include 'conn.php';
-
     if($_POST){
+        include 'conn.php';
         //Mis Variables
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $edad = $_POST['edad'];
-        $estado = $_POST['estado'];
-
-        //Comentario
-        //echo $nombre, $apellido, $edad, $estado;
-
-        $queryInsert = "INSERT INTO datos (Nombre, Apellido, Edad, Estado) VALUES ('$nombre', '$apellido', '$edad', '$estado')";
-        if(!mysqli_query($conn, $queryInsert)){
-            //echo "Registro capturado </br>";
-            echo "Error: ".$queryInsert, mysqli_error($conn)."</br>";
+        $valor = $_POST['valor'];
+        $campo = $_POST['campo'];
+        
+        switch ($campo){
+            case "id":
+                $querySelect = "SELECT * FROM datos WHERE Id = $valor";
+                break;
+            case "nombre":
+                $querySelect = "SELECT * FROM datos WHERE Nombre = '$valor'";
+                break;
+            case "apellido":
+                $querySelect = "SELECT * FROM datos WHERE Apellido = '$valor'";
+                break;
+            case "estado":
+                $querySelect = "SELECT * FROM datos WHERE Estado = '$valor'";
+                break;
         }
-        else{
-            echo "Registro Almacenado con Exito";
+        $resultado = mysqli_query($conn, $querySelect);
+
+        if($resultado){
+          echo "<table class='table'>
+          <thead class='table-dark'>
+          <tr>
+              <th scope='col'>#ID</th>
+              <th scope='col'>#NOMBRE</th>
+              <th scope='col'>#APELLIDO</th>
+              <th scope='col'>#EDAD</th>
+              <th scope='col'>#ESTADO</th>
+              <th scope='col'>#ACCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>";
+          while($row = mysqli_fetch_assoc($resultado)){
+            echo "<tr><th scope='row'>".$row["Id"].
+            "</th><td>".$row["Nombre"].
+            "</td><td>".$row["Apellido"].
+            "</td><td>".$row["Edad"].
+            "</td><td>".$row["Estado"].
+            "</td><td><a href='#' class='btn btn-warning'>Editar</a></td>";
+          }
+          echo "</tbody>
+          </table>";        
+        }else{
+            echo "No hay Registros con Coinsidencia";
         }
     }
 ?>
-
-
-
 </body>
 </html>

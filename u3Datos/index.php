@@ -28,7 +28,7 @@
           <a class="nav-link" href="insert.php">Insertar Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Actualizar Datos</a>
+          <a class="nav-link" href="update.php">Actualizar Datos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Eliminar Datos</a>
