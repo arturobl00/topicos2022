@@ -25,13 +25,13 @@
           <a class="nav-link" aria-current="page" href="index.php">Mostrar Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Insertar Datos</a>
+          <a class="nav-link" href="insert.php">Insertar Datos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="update.php">Actualizar Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="delete.php">Eliminar Datos</a>
+          <a class="nav-link active" href="#">Eliminar Datos</a>
         </li>
       </ul>
     </div>
@@ -40,65 +40,54 @@
  
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mt-4">Formulario de Registro</h2>
+        <h2 class="mt-4">Eliminar Registro</h2>
         <hr>
+        <?php
+            $Id = $_GET['id'];
+            $Nombre = $_GET['nombre'];
+            echo $Nombre;
+            $Apellido = $_GET['apellido'];
+            $Edad = $_GET['edad'];
+            $Estado = $_GET['estado'];
+        ?>
         <form method="POST">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" class="form-control"/>
+                <input type="text" disabled name="nombre" id="nombre" class="form-control" value="<?php echo $Nombre;?>"/>
             </div>
             <br>
             <div class="form-group">
                 <label for="apellido">Apellido:</label>
-                <input type="text" name="apellido" id="apellido" class="form-control"/>
+                <input type="text" disabled name="apellido" id="apellido" class="form-control" value="<?php echo $Apellido;?>"/>
             </div>
             <br>
             <div class="form-group">
                 <label for="edad">Edad:</label>
-                <input type="number" name="edad" id="edad" class="form-control"/>
+                <input type="number" disabled name="edad" id="edad" class="form-control" value="<?php echo $Edad;?>"/>
             </div>
             <br>
             <div class="form-group">
                 <label for="estado">Estado:</label>
-                <select name="estado" id="estado" class="form-select">
-                  <option value="Activado">Activado</option>
-                  <option value="Desactivado">Desactivado</option>
-                </select>
+                <input type="text" disabled name="estado" id="estado" class="form-control" value="<?php echo $Estado;?>"/>
             </div>
             <br>
             <div class="form-group">
-                <input type="submit" name="guardar" value="Guardar" class="btn btn-primary"/>
-                <a class="btn btn-success" href="index.php">Terminar</a>
+                <input type="submit" name="Si" value="Si" class="btn btn-danger"/>
+                <a class="btn btn-success" href="index.php">No</a>
             </div>
         </form>
     </div>
 </div>
-
+<br>
 <?php
     include 'conn.php';
 
     if($_POST){
-        //Mis Variables
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $edad = $_POST['edad'];
-        $estado = $_POST['estado'];
-
-        //Comentario
-        //echo $nombre, $apellido, $edad, $estado;
-
-        $queryInsert = "INSERT INTO datos (Nombre, Apellido, Edad, Estado) VALUES ('$nombre', '$apellido', '$edad', '$estado')";
-        if(!mysqli_query($conn, $queryInsert)){
-            //echo "Registro capturado </br>";
-            echo "Error: ".$queryInsert, mysqli_error($conn)."</br>";
-        }
-        else{
-            echo "Registro Almacenado con Exito";
-        }
+        $queryDelete = "DELETE FROM datos WHERE Id = $Id";
+        mysqli_query($conn, $queryDelete);
+        echo "Registro Eliminado con Exito";
     }
 ?>
-
-
 
 </body>
 </html>

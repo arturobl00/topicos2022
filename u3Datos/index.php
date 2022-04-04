@@ -31,7 +31,7 @@
           <a class="nav-link" href="update.php">Actualizar Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Eliminar Datos</a>
+          <a class="nav-link" href="delete.php">Eliminar Datos</a>
         </li>
       </ul>
     </div>

@@ -31,7 +31,7 @@
           <a class="nav-link active" href="#">Actualizar Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Eliminar Datos</a>
+          <a class="nav-link" href="delete.php">Eliminar Datos</a>
         </li>
       </ul>
     </div>
@@ -40,7 +40,7 @@
  
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mt-4">Edición de Registro</h2>
+        <h2 class="mt-4">Edición de Registro Busqueda</h2>
         <hr>
         <form method="POST">
             <div class="form-group">
@@ -102,13 +102,14 @@
             </tr>
           </thead>
           <tbody>";
+          $ruta = "";
           while($row = mysqli_fetch_assoc($resultado)){
             echo "<tr><th scope='row'>".$row["Id"].
             "</th><td>".$row["Nombre"].
             "</td><td>".$row["Apellido"].
             "</td><td>".$row["Edad"].
             "</td><td>".$row["Estado"].
-            "</td><td><a href='#' class='btn btn-warning'>Editar</a></td>";
+            "</td><td><a href='update2.php?id=".$row["Id"]."&nombre=".$row["Nombre"]."&apellido=".$row["Apellido"]."&edad=".$row["Edad"]."&estado=".$row["Estado"]." 'class='btn btn-warning'>Editar</a></td>";
           }
           echo "</tbody>
           </table>";        
