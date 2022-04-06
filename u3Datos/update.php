@@ -44,11 +44,6 @@
         <hr>
         <form method="POST">
             <div class="form-group">
-                <label for="valor">Valor:</label>
-                <input type="text" name="valor" id="valor" class="form-control"/>
-            </div>
-            <br>
-            <div class="form-group">
                 <label for="campo">Campo:</label>
                 <select name="campo" id="campo" class="form-select">
                   <option value="id">#ID</option>
@@ -56,7 +51,12 @@
                   <option value="apellido">#APELLIDO</option>
                   <option value="estado">#ESTADO</option>
                 </select>
-            </div>
+            </div>    
+            <br>
+            <div class="form-group">
+                <label for="valor">Valor:</label>
+                <input type="text" name="valor" id="valor" class="form-control"/>
+            </div>   
             <br>
             <div class="form-group">
                 <input type="submit" name="buscar" value="Buscar" class="btn btn-primary"/>
